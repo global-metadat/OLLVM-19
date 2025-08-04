@@ -77,28 +77,28 @@ jobs:
         llvm-19\\llvm
         cmake --build build --config ${{ env.BUILD_TYPE }} --target install --verbose -j ${{ env.CORES }}
 
-    - name: Package llvm
-      run: |
-        7z a -t7z -mmt -mf -mhc -mhcf -m0=LZMA2 -mx=3 windows-llvm.7z ^
-          install/bin/clang.exe ^
-          install/bin/clang-cl.exe ^
-          install/bin/clang-cpp.exe ^
-          install/bin/clang-format.exe ^
-          install/bin/clang++.exe ^
-          install/bin/lld.exe ^
-          install/bin/lld-link.exe ^
-          install/bin/llvm-ar.exe ^
-          install/bin/llvm-lib.exe ^
-          install/bin/llvm-nm.exe ^
-          install/bin/llvm-objdump.exe ^
-          install/bin/llvm-readobj.exe ^
-          install/bin/llvm-strip.exe
-
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
         name: windows-llvm
         path: install/
+
+    - name: Package llvm
+      run: |
+        7z a -t7z -mmt -mf -mhc -mhcf -m0=LZMA2 -mx=3 windows-llvm.7z `
+          install/bin/clang.exe `
+          install/bin/clang-cl.exe `
+          install/bin/clang-cpp.exe `
+          install/bin/clang-format.exe `
+          install/bin/clang++.exe `
+          install/bin/lld.exe `
+          install/bin/lld-link.exe `
+          install/bin/llvm-ar.exe `
+          install/bin/llvm-lib.exe `
+          install/bin/llvm-nm.exe `
+          install/bin/llvm-objdump.exe `
+          install/bin/llvm-readobj.exe `
+          install/bin/llvm-strip.exe
 
     - name: Release
       uses: softprops/action-gh-release@v2
