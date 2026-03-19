@@ -53,7 +53,7 @@ jobs:
         -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded ^
         -DLLVM_OBFUSCATION_LINK_INTO_TOOLS=ON ^
         -DCMAKE_INSTALL_PREFIX=install ^
-        -DLLVM_TARGETS_TO_BUILD="AArch64;ARM;X86" ^
+        -DLLVM_TARGETS_TO_BUILD="AArch64" ^
         -DLLVM_ENABLE_PROJECTS="clang;lld" ^
         -DCMAKE_C_COMPILER=clang-cl ^
         -DCMAKE_CXX_COMPILER=clang-cl ^
